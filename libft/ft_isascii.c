@@ -6,3 +6,4 @@ int ft_isascii(int arg)
     }
     return  0;
 }
+

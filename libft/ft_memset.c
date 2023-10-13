@@ -1,11 +1,10 @@
-#include <stddef.h>
-void * memset ( void * ptr, int value, size_t num )
-{
-    int i = 0;
-    while (i < num)
-    {
-        ptr[i++] = (u)value;
 
-    }
-    return  ptr;
+#include <stddef.h>
+
+void	*ft_memset(void *str, int c, size_t n)
+{
+    void *ptr = str;
+	while (n--)
+		*(unsigned char *)str++ = (unsigned char)c;
+	return (ptr);
 }
