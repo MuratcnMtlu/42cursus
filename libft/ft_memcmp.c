@@ -7,10 +7,7 @@
         size_t i = 0;
 
         if (n == 0)
-        {
             return  0;
-        }
-        
         while ((++i < n) && (*p1 == *p2))
         {
             p1++;
