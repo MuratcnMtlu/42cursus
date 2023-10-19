@@ -14,10 +14,10 @@ char*   ft_strchr(const char*str, int c)
         i++;
         dst++;
     }
-        if (i == (int)sizeof(str) && c != '\0') {
+    if (i == (int)sizeof(str) && c != '\0')
+    {
             return NULL; // Aksi takdirde, c bulunamadı
-        }
-    
+    } 
     return dst;
 }
 
