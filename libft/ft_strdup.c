@@ -1,14 +1,13 @@
 #include "libft.h"
 #include <string.h>
 
-char *ft_cpyStr(char * dest , const char * src, size_t size)
+char *ft_cpyStr(char * dest , const char * src)
 {
     int i = 0;
-    while (!size)
+    while (*src)
     {
-        *(dest + i) = *(src + i);
+        *(dest + i) = *src++;
         i++;
-        size--;
     }
     *(dest + i) = '\0';
     return dest;
@@ -17,9 +16,9 @@ char *ft_cpyStr(char * dest , const char * src, size_t size)
 char *ft_strdup(const char *s)
 {
     char *dpc;
-    dpc = (char *)malloc(ft_strlen(s) + 1);
+    dpc = (char *)malloc(ft_strlen(s) + (size_t)1);
     if (!dpc)
         return NULL;
-    return  (ft_cpyStr(dpc, s, ft_strlen(s) + 1 ));
+    return  (ft_cpyStr(dpc, s));
 }
 
