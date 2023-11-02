@@ -20,4 +20,4 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
         new_Str[i] = s[start + i];
     new_Str[len] = '\0';
     return new_Str;
-}
+}   
