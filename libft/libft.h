@@ -6,7 +6,7 @@
 /*   By: murmutlu <murmutlu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 13:26:44 by oakbulak          #+#    #+#             */
-/*   Updated: 2023/10/19 14:38:44 by murmutlu         ###   ########.fr       */
+/*   Updated: 2023/11/03 14:16:05 by murmutlu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*ft_strrchr(const char *str, int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t size);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
-void	*ft_memmove(void *dst, const void *src, size_t len);
+//void	*ft_memmove(void *dst, const void *src, size_t len);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *str);

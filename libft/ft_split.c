@@ -1,86 +1,72 @@
-
 #include "libft.h"
 
-
-/*
-    Kaç kelime var bul
-    malloc
-    hafıza kontrol
-    charı ara ilerlet 
-    else de kelimeyi yükle 
-
-*/
-
-static char	**free_array(char **ptr, size_t step)
+static size_t	count_words(char const *s, char c)
 {
-    while (step-- > 0)
-        free(*(ptr + step));
-	return (free(ptr), NULL);
+	size_t	word_counter;
+
+	word_counter = 0;
+	while (*s)
+	{
+		if (*s == c)
+			s++;
+		else
+		{	
+			word_counter++;
+			while (*s && *s != c)
+				s++;
+		}
+	}
+	return (word_counter);
 }
 
-static size_t   wordlen(char const *s, char c)
+static void	free_array(size_t i, char **array)
 {
-    size_t  wordlen;
-
-    wordlen = 0;
-    while (*s)
-    {
-        if (*s == c)
-           s++;
-        else
-        {
-            wordlen++;
-            while (*s && *s != c)
-                s++;
-        }
-    }
-    return (wordlen);
+	while (i > 0)
+	{
+		i--;
+		free(*(array + i));
+	}
+	free(array);
 }
 
-char    **ft_split(char const *s, char c)
+static char	**split(char const *s, char c, char **array, size_t words_count)
 {
-    size_t wordsize;
-    size_t lett_count;
-    char **splitted;
-    size_t step;
+	size_t	i;
+	size_t	j;
+    size_t letter_counter;
 
-    step = 0;
-    wordsize = wordlen(s, c);
-    splitted = (char **)malloc((wordsize + 1) * sizeof(char*));
-    if (!splitted)
-        return NULL;
-    while (*s)
-    {
-        if (*s == c)
-           s++;
-        else
-        {
-            lett_count = 0;
-            while (*s && *s != c && ++lett_count)
-                s++;
-            *splitted = ft_substr(s - lett_count, 0, lett_count);
-            if (!*splitted++ && ++step)
-                return (free_array(splitted, step));
-        }
-    }
-    *splitted = NULL;
-    return(splitted - wordsize);
-}
-
-/*
-#include <stdio.h>
-
-int main(void)
-{
-    char **str;
-    int i = 0;
-    str = ft_split("mur,mut,aa", ',');
-    while (i < 3)
-    {
-         printf("%s\n",str[i++]);
-    }
-    
    
+	i = 0;
+	j = 0;
+	while (i < words_count)
+	{
+        if (*(s + j) == c)
+            j++;
+        else
+        {
+            letter_counter = 0;
+            while (*(s + j) && *(s + j) != c && ++letter_counter)
+		    	j++;
+            *(array + i) = ft_substr(&*((s + j) - letter_counter), 0 , letter_counter);
+		    if (!*(array + i))
+			    return (free_array(i, array),NULL);
+            i++;
+        }
+	}
+	return (*(array + i) = NULL, array);
 }
-*/
 
+char	**ft_split(char const *s, char c)
+{
+	char	**array;
+	size_t	words;
+
+	if (!s)
+		return (NULL);
+	words = count_words(s, c);
+	array = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!array)
+		return (NULL);
+	array = split(s, c, array, words);
+	return (array);
+}

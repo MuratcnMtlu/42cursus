@@ -1,38 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: murmutlu <murmutlu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/03 11:52:06 by murmutlu          #+#    #+#             */
+/*   Updated: 2023/11/03 14:35:52 by murmutlu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
-#include <string.h>
 
-char*   ft_strchr(const char*str, int c)
+char	*ft_strchr(const char *s, int c)
 {
-    int i = 0;
-    char *dst = (char *)str;
+	char	*str;
 
-    while (i < (int)sizeof(str))
-    {
-        if (*(dst) == c)
-            break ;
-        i++;
-        dst++;
-    }
-    if (i == (int)sizeof(str) && c != '\0')
-    {
-            return NULL; // Aksi takdirde, c bulunamadı
-    } 
-    return dst;
+	str = (char *)s;
+	while (*str != (char)c)
+		if (*str++ == '\0')
+			return (NULL);
+	return (str);
 }
-
-/*
-int main(void)
-{
-    const char cdizi[] = "Bilgisayar";
-    char *ret;
-    char *dst;
-    ret = strchr(cdizi, '\0');
-    dst = ft_strchr(cdizi, '\0');
-
-    printf("benim dizi içeriği: %s\n", dst);
-    printf("hazır dizi içeriği: %s", ret);
-
-    return 0;
-}
-*/

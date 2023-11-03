@@ -1,16 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: murmutlu <murmutlu@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/03 11:52:54 by murmutlu          #+#    #+#             */
+/*   Updated: 2023/11/03 15:41:27 by murmutlu         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
  #include "libft.h"
-#include <stdio.h>
 
-size_t ft_strlen(const char *arg)
+char    *ft_strrchr(const char *s, int c)
 {
-    int i = 0;
-    while (arg[i] != '\0')
-        i++;
-    return  i;
-}
-
- char * ft_strrchr(const char *s, int c)
- {
     int i = (int)ft_strlen(s);
     char src = (char)c;
 
@@ -23,4 +26,4 @@ size_t ft_strlen(const char *arg)
         i--;
     }
     return 0;
- }
+}
